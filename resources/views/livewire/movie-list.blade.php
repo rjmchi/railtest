@@ -3,13 +3,15 @@
 
     <div class="p-2">
         @forelse ($categories as $cat)
-            <p class="text-xl font-bold text-indigo-800 my-2">{{ $cat->name }}</p>
+            <p class="text-xl font-bold text-indigo-800 my-2">{{ $cat->name }}
+                <flux:button wire:click="reorder({{ $cat }})">Reorder</flux:button>
+            </p>
             <div class="px-2">
                 @forelse ($cat->movies as $movie)
-                    <div class="grid grid-cols-6 border-b border-teal-200 py-1" wire:key='$movie->id'>
-                        <span class="col-span-3">{{ $movie->title }}</span>
+                    <div class="grid grid-cols-6 border-b border-teal-200 py-1" wire:key="{{ $movie->id }}">
                         <span> {{ $movie->rank }}</span>
-                        <livewire:move-item :movie="$movie" />
+                        <span class="col-span-3">{{ $movie->title }}</span>
+                        <livewire:move-item :movie="$movie" wire:key="{{ $movie->id }}" />
                     </div>
 
                 @empty

@@ -26,6 +26,6 @@ class AddMovie extends Component
         $flds = $this->validate();
         $cat->movies()->create($flds);
         $this->reset();
-         $this->dispatch('movie-added');
+         $this->dispatch('list-change');
     }
 }
