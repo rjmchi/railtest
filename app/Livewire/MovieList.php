@@ -4,10 +4,12 @@ namespace App\Livewire;
 
 use App\Models\Category;
 use Livewire\Component;
+use Livewire\Attributes\On;
 
 class MovieList extends Component
 {
     public $categories;
+     #[On('movie-added')]
     public function render()
     {
         // $this->categories = Category::with('movies')->get();

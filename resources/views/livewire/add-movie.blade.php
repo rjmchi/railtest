@@ -2,14 +2,16 @@
     <form wire:submit='save' class="border border-indigo-800 p-5 mx-10 shadow-xl rounded-xl">
         @csrf
 
-        <flux:select wire:model="category" placeholder="Choose Category...">
-            @foreach ($categories as $category)
-                <flux:select.option value="{{ $category->id }}">{{ $category->name }}</flux:select.option>
+        @if (!$category)
+            <p>Select a Category</p>
+        @endif
+        <flux:select wire:model.live="category" placeholder="Choose Category...">
+            @foreach ($categories as $cat)
+                <flux:select.option value="{{ $cat->id }}">{{ $cat->name }}</flux:select.option>
             @endforeach
-
         </flux:select>
 
-        <div class="grid grid-cols-4 gap-2 mb-3">
+        <div class="grid grid-cols-4 gap-2 my-3">
             <div class="col-span-3">
                 <flux:input name="title" label="Title:" type="text" autofocus placeholder="Title"
                     wire:model='title' />

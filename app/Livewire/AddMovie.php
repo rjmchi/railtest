@@ -9,7 +9,8 @@ use Livewire\Component;
 class AddMovie extends Component
 {
     public $categories;
-    public $category;
+    public $category=1;
+
     #[Rule('required|string')]
     public $title;
 
@@ -22,10 +23,9 @@ class AddMovie extends Component
     }
     public function save() {
         $cat = Category::find($this->category);
-
         $flds = $this->validate();
-
         $cat->movies()->create($flds);
         $this->reset();
+         $this->dispatch('movie-added');
     }
 }
