@@ -1,17 +1,8 @@
 <x-layouts.guest>
 
-    <h1 class="text-indigo-700 font-bold text-2xl">Movie List</h1>
+    <livewire:movie-list />
 
-    @forelse ($movies as $movie)
-        <p>{{ $movie->title }}</p>
+    <livewire:add-movie />
 
-    @empty
-        <h1>No Movies</h1>
-    @endforelse
-
-
-    @foreach ($movies as $movie)
-        <p>{{ $movie->title }}</p>
-    @endforeach
 
 </x-layouts.guest>

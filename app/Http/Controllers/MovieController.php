@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Movie;
 use Illuminate\Http\Request;
 
@@ -12,8 +13,7 @@ class MovieController extends Controller
      */
     public function index()
     {
-        $movies = Movie::orderBy('rank')->get();
-        return view('welcome', compact('movies'));
+        return view('welcome');
     }
 
     /**
@@ -29,7 +29,10 @@ class MovieController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'title'=> 'required | string',
+            'rank'=> 'required | integer | min:0'
+        ]);
     }
 
     /**
