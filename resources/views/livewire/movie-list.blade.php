@@ -5,6 +5,9 @@
         @forelse ($categories as $cat)
             <p class="text-xl font-bold text-indigo-800 my-2">{{ $cat->name }}
                 <flux:button wire:click="reorder({{ $cat }})">Reorder</flux:button>
+                <flux:button wire:click="sortBy('title')">Sort By Title</flux:button>
+                <flux:button wire:click="sortBy('rank')">Sort By Rank</flux:button>
+
             </p>
             <div class="px-2">
                 @forelse ($cat->movies as $movie)

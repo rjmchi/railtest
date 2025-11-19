@@ -9,6 +9,6 @@ class Category extends Model
     protected $guarded = [];
 
     public function movies() {
-        return $this->hasMany(Movie::class)->orderBy('rank');;
+        return $this->hasMany(Movie::class);
     }
 }

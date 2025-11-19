@@ -9,6 +9,7 @@ use Livewire\Attributes\On;
 class MovieList extends Component
 {
     public $categories;
+    public $sortOrder = 'rank';
 
        protected $listeners = [
         'list-change' => '$refresh'
@@ -18,7 +19,7 @@ class MovieList extends Component
     public function render()
     {
         $this->categories = Category::with(['movies' => function ($query) {
-            $query->orderBy('rank');
+            $query->orderBy($this->sortOrder);
             }])->get();
 
         return view('livewire.movie-list');
@@ -32,6 +33,9 @@ class MovieList extends Component
             $rank++;
             $movie->save();
         }
+    }
+    public function sortBy($sort) {
+        $this->sortOrder = $sort;
     }
 
 }
